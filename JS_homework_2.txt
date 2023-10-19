@@ -1,0 +1,55 @@
+Напишите валидационный скрипт используя функции 
+
+ 1. Скрипт должен на вход принимать строку.
+ 2. После проверки строки выводить в консоль сообщение где будет конкретно написано, что не так в ведённой строке.
+ 3. Минимум 5 символов в строке
+ 4. Максимум 64 символа в строке
+ 5. В строке должны быть буквы
+ 6. Должна быть хотя бы одна буква в верхнем регистре
+ 7. Должна быть хотя бы одна цифра
+ 8. Должна быть хотя бы одна @
+ 9. Строка не должна быть пустой
+
+let str = "";
+
+    const hasStringLetters = (str) => {
+        return /[a-zа-яё]/i.test(str);
+    };
+    const hasStringBigLetters = (str) => {
+        return /[A-ZА-ЯЁ]/.test(str);
+    };
+    const hasStringNumbers = (str) => {
+        return /[0-9]/.test(str);
+    };
+    const hasStringSpecialChar = (str) => {
+        return /@/.test(str);
+    };
+
+    const isStringValid = (str) => {
+        if (!str) {
+            return "Строка не должна быть пустой";
+        }
+        else if (str.length < 5) {
+            return "Строка должна содержать не менее 5 символов";
+        }
+        else if (str.length > 64) {
+            return "Строка должна содержать не более 64 символов";
+        }
+        else if (!hasStringLetters(str)) {
+            return "Строка должна содержать буквы";
+        }
+        else if (!hasStringBigLetters(str)) {
+            return "Строка должна содержать хотя бы одну букву в верхнем регистре";
+        }
+        else if (!hasStringNumbers(str)) {
+            return "Строка должна содержать хотя бы одну цифру";
+        }
+        else if (!hasStringSpecialChar(str)) {
+            return "Строка должна содержать хотя бы одну @";
+        } 
+        return "Строка соответствует требованиям";
+       
+    };
+
+    console.log(isStringValid(str));
+    
